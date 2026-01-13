@@ -58,7 +58,7 @@ export default function SelectedWorks({ projects }: SelectedWorksProps) {
       <SectionHeader title="Selected Works" />
       <div className="flex flex-col gap-[48px] items-start w-full">
         {projects.map((project, index) => (
-          <article key={index} className="flex flex-col gap-[12px] items-start w-full">
+          <article key={index} className="flex flex-col gap-[24px] items-start w-full">
             {/* Header: Title + Tagline */}
             <div className="flex flex-col gap-1 items-start leading-5 text-sm tracking-[-0.084px] w-full">
               <p className="font-medium text-text-primary">
@@ -74,7 +74,7 @@ export default function SelectedWorks({ projects }: SelectedWorksProps) {
               isDesktop ? (
                 <button
                   onClick={() => openLightbox(index)}
-                  className="cover-interactive w-full cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-text-primary focus-visible:ring-offset-2 focus-visible:ring-offset-gray-1 rounded-lg"
+                  className="cover-interactive w-full cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-text-primary focus-visible:ring-offset-2 focus-visible:ring-offset-gray-1"
                   aria-label={`View ${project.title} project details`}
                 >
                   {project.coverComponent}
@@ -86,41 +86,44 @@ export default function SelectedWorks({ projects }: SelectedWorksProps) {
               isDesktop ? (
                 <button
                   onClick={() => openLightbox(index)}
-                  className="cover-interactive w-full cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-text-primary focus-visible:ring-offset-2 focus-visible:ring-offset-gray-1 rounded-lg overflow-hidden"
+                  className="cover-interactive w-full cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-text-primary focus-visible:ring-offset-2 focus-visible:ring-offset-gray-1 overflow-hidden"
                   aria-label={`View ${project.title} project details`}
                 >
                   <img
                     src={project.imageUrl}
                     alt={`${project.title} screenshot`}
-                    className="cover-content w-full h-auto object-cover rounded transition-transform duration-200"
+                    className="cover-content w-full h-auto object-cover transition-transform duration-200"
                   />
                 </button>
               ) : (
                 <img
                   src={project.imageUrl}
                   alt={`${project.title} screenshot`}
-                  className="w-full h-auto object-cover rounded"
+                  className="w-full h-auto object-cover"
                 />
               )
             ) : (
-              <div className="bg-gray-3 w-full h-[360px] rounded" />
+              <div className="bg-gray-3 w-full h-[360px]" />
             )}
 
-            {/* Contribution: What you did */}
-            {project.contribution && (
-              <p className="font-normal leading-5 text-sm text-text-secondary tracking-[-0.084px] w-full">
-                {project.contribution}
-              </p>
-            )}
+            {/* Contribution and Tags - tighter spacing */}
+            <div className="flex flex-col gap-[12px] items-start w-full">
+              {/* Contribution: What you did */}
+              {project.contribution && (
+                <p className="font-normal leading-5 text-sm text-text-secondary tracking-[-0.084px] w-full">
+                  {project.contribution}
+                </p>
+              )}
 
-            {/* Tags */}
-            {project.tags && project.tags.length > 0 && (
-              <div className="flex gap-2 items-start">
-                {project.tags.map((tag, tagIndex) => (
-                  <Badge key={tagIndex}>{tag}</Badge>
-                ))}
-              </div>
-            )}
+              {/* Tags */}
+              {project.tags && project.tags.length > 0 && (
+                <div className="flex gap-2 items-start">
+                  {project.tags.map((tag, tagIndex) => (
+                    <Badge key={tagIndex}>{tag}</Badge>
+                  ))}
+                </div>
+              )}
+            </div>
           </article>
         ))}
       </div>

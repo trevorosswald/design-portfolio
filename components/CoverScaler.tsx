@@ -36,20 +36,18 @@ export default function CoverScaler({
     return () => window.removeEventListener('resize', updateScale)
   }, [width])
 
-  // Desktop: use aspect ratio (54px horizontal padding, 32px vertical padding)
+  // Desktop: use aspect ratio based on design dimensions
   // Mobile: use exact scaled height to avoid excess vertical space
-  const desktopOuterWidth = width + 54 * 2   // 648
-  const desktopOuterHeight = height + 32 * 2 // 448
   const scaledHeight = height * scale
   
   return (
     <div 
-      className="cover-wrapper bg-gray-3 rounded-lg w-full p-3 sm:px-[54px] sm:py-8"
-      style={!isMobile ? { aspectRatio: `${desktopOuterWidth}/${desktopOuterHeight}` } : undefined}
+      className="cover-wrapper w-full"
+      style={!isMobile ? { aspectRatio: `${width}/${height}` } : undefined}
     >
       <div 
         ref={containerRef}
-        className={`w-full relative rounded flex items-center justify-center ${!isMobile ? 'h-full' : ''}`}
+        className={`w-full relative flex items-center justify-center ${!isMobile ? 'h-full' : ''}`}
         style={isMobile ? { height: `${scaledHeight}px` } : undefined}
       >
         <div 

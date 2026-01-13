@@ -42,6 +42,13 @@ export default function RootLayout({
       <body>
         {children}
         
+        {/* Analytics Script */}
+        <Script
+          src="https://cdn.visitors.now/v.js"
+          data-token="baa812f1-6265-486e-8f75-3e450d4e957f"
+          strategy="afterInteractive"
+        />
+        
         {/* Cal.com Embed Script */}
         <Script id="cal-embed" strategy="lazyOnload">
           {`

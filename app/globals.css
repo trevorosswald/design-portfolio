@@ -1,0 +1,387 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* ============================================
+     MATERIAL DESIGN BASE PALETTE - Light Mode
+     ============================================ */
+  --md-gray-50: #FAFAFA;
+  --md-gray-100: #F5F5F5;
+  --md-gray-200: #EEEEEE;
+  --md-gray-300: #E0E0E0;
+  --md-gray-400: #BDBDBD;
+  --md-gray-500: #9E9E9E;
+  --md-gray-600: #757575;
+  --md-gray-700: #616161;
+  --md-gray-800: #424242;
+  --md-gray-900: #212121;
+  
+  /* Material semantic colors */
+  --md-surface: #FFFFFF;
+  --md-background: #FAFAFA;
+  --md-on-surface: #212121;
+  --md-on-surface-medium: #757575;
+  --md-on-surface-disabled: #9E9E9E;
+  --md-outline: #E0E0E0;
+  --md-outline-variant: #BDBDBD;
+  
+  /* Material status colors */
+  --md-success: #4CAF50;
+  --md-error: #F44336;
+
+  /* ============================================
+     EXPERIAN BRAND COLORS (unchanged by theme)
+     ============================================ */
+  --experian-blue-900: #1D4F91;
+  --experian-blue-700: #426DA9;
+  --experian-blue-300: #92B3E2;
+  --experian-magenta: #AF1685;
+  --experian-purple: #883B92;
+  --experian-pink: #E63888;
+
+  /* ============================================
+     PORTFOLIO DESIGN SYSTEM - Light Mode
+     ============================================ */
+  --text-primary: var(--md-on-surface);
+  --text-secondary: var(--md-on-surface-medium);
+  --text-disabled: var(--md-on-surface-disabled);
+  --gray-1: var(--md-gray-50);
+  --gray-3: var(--md-gray-100);
+  --gray-4: #EDEDED;
+  --gray-8: var(--md-gray-400);
+  --brown-4: #F4E9DD;
+  --green-8: #5bb98c;
+  --button-secondary: var(--md-gray-200);
+  --button-secondary-hover: var(--md-gray-100);
+  --button-ghost: rgba(0, 0, 0, 0);
+  --button-ghost-hover: var(--md-gray-100);
+  --button-disabled: var(--md-gray-100);
+  --icon-primary: var(--md-on-surface);
+  --border-primary: var(--md-outline);
+  --purple-7: #d3b4ed;
+
+  /* ============================================
+     CONTRACT MANAGER COVER - Light Mode
+     ============================================ */
+  --cm-bg: var(--md-background);
+  --cm-card-bg: var(--md-surface);
+  --cm-sidebar-bg: var(--md-gray-100);
+  --cm-header-bg: var(--md-gray-100);
+  
+  --cm-text: var(--md-on-surface);
+  --cm-text-muted: var(--md-on-surface-medium);
+  --cm-text-placeholder: var(--md-gray-500);
+  --cm-text-pagination: var(--md-gray-700);
+  
+  --cm-border: var(--md-gray-300);
+  --cm-border-light: var(--md-gray-300);
+  --cm-border-input: var(--md-gray-400);
+  --cm-divider: var(--md-gray-300);
+  --cm-checkbox-border: var(--md-gray-700);
+  
+  --cm-blue-primary: var(--experian-blue-900);
+  --cm-blue-secondary: var(--experian-blue-700);
+  --cm-blue-border: var(--experian-blue-300);
+  
+  --cm-green: #009F4D;
+  --cm-red: #E4002B;
+  
+  --cm-icon-nav: var(--md-on-surface);
+  --cm-icon-action: var(--experian-blue-900);
+  --cm-icon-disabled: var(--md-gray-500);
+  --cm-icon-pagination: var(--md-gray-800);
+  --cm-icon-pagination-disabled: var(--md-gray-400);
+  --cm-table-filter-icon: var(--md-gray-800);
+  
+  /* Card elevation - shadow only in light mode, outline only in dark mode */
+  --cm-card-shadow: 0px 4px 8px rgba(0,0,0,0.08), 0px 16px 24px rgba(0,0,0,0.08), 0px 16px 32px rgba(0,0,0,0.08);
+
+  /* ============================================
+     BUSHEL FULFILLMENT COVER - Light Mode
+     Based on Tailwind CSS v1 Cool Gray palette
+     ============================================ */
+  --bf-bg: #f7fafc;              /* Tailwind v1 gray-100 */
+  --bf-card-bg: #ffffff;         /* white - cards, nav, rows */
+  --bf-sidebar-bg: #ffffff;      /* white - sidebar */
+  
+  --bf-text: #2d3748;            /* Tailwind v1 gray-800 - primary text */
+  --bf-text-muted: #718096;      /* Tailwind v1 gray-600 - section labels, icons */
+  --bf-text-subtle: #a0aec0;     /* Tailwind v1 gray-500 - "last updated" */
+  --bf-footer-text: #cbd5e0;     /* Tailwind v1 gray-400 - footer */
+  
+  --bf-border: #e2e8f0;          /* Tailwind v1 gray-300 - borders */
+  --bf-tag-bg: #e2e8f0;          /* Tailwind v1 gray-300 - filter tags */
+  
+  --bf-blue: #4a90e2;            /* Bushel brand blue */
+  --bf-green: #0fb867;           /* Success green */
+  --bf-red: #e53e3e;             /* Tailwind v1 red-600 - error */
+  
+  --bf-row-shadow: 0px 0.75px 1.125px rgba(45,55,72,0.2), 0px 0px 0.75px rgba(45,55,72,0.15);
+  /* Card elevation - shadow only in light mode, outline only in dark mode */
+  --bf-card-shadow: 0px 4px 8px rgba(0,0,0,0.08), 0px 16px 24px rgba(0,0,0,0.08), 0px 16px 32px rgba(0,0,0,0.08);
+
+  /* ============================================
+     ROGER COVER - Light Mode
+     Based on Tailwind CSS v1 Cool Gray palette
+     ============================================ */
+  --roger-bg: #f7fafc;              /* Tailwind v1 gray-100 - main bg */
+  --roger-card-bg: #ffffff;         /* white - top nav, side nav */
+  --roger-sidebar-content-bg: #f7fafc;  /* gray-100 - sidebar content area */
+  --roger-panel-bg: #e2e8f0;        /* Tailwind v1 gray-300 - deal cards, panels */
+  --roger-chip-bg: #edf2f7;         /* Tailwind v1 gray-200 - chips, inputs */
+  --roger-chat-illustration-bg: #edf2f7;  /* gray-200 - chat empty state circle */
+  
+  --roger-text: #2d3748;            /* Tailwind v1 gray-800 - primary text */
+  --roger-text-muted: #718096;      /* Tailwind v1 gray-600 - timestamps, placeholders */
+  --roger-text-subtle: #a0aec0;     /* Tailwind v1 gray-500 - chat illustration icons */
+  --roger-text-terms-label: #314a55;   /* Custom teal-gray - "Additional terms" label */
+  --roger-text-terms-body: #63747a;    /* Custom teal-gray - terms body text */
+  
+  --roger-border: #e2e8f0;          /* Tailwind v1 gray-300 - borders */
+  --roger-divider: #edf2f7;         /* Tailwind v1 gray-200 - card internal dividers */
+  --roger-dot: #2d3748;             /* gray-800 - trip route dot */
+  
+  --roger-blue: #4a90e2;            /* Roger brand blue - buttons */
+  --roger-lime: #B1C82C;            /* Roger brand lime - logo */
+  
+  --roger-icon-nav: #718096;        /* gray-600 - nav icons (menu, notifications, settings) */
+  --roger-icon-active: #4a90e2;     /* brand blue - active nav icon (thumbs up) */
+  --roger-icon-dark: #2d3748;       /* gray-800 - back arrow, people, help icons */
+  
+  --roger-pending-bg: #2d3748;      /* gray-800 - "Pending" badge */
+  --roger-pending-text: #ffffff;    /* white */
+  --roger-counter-bg: #edf2f7;      /* gray-200 - "Counter" button */
+  --roger-counter-text: #2d3748;    /* gray-800 */
+  --roger-company-badge-bg: #1a472a;  /* Dark green - Cargill badge */
+  
+  /* Card elevation - shadow only in light mode, outline only in dark mode */
+  --roger-card-shadow: 0px 4px 8px rgba(0,0,0,0.08), 0px 16px 24px rgba(0,0,0,0.08), 0px 16px 32px rgba(0,0,0,0.08);
+  
+  /* Map - switches between light and dark variants */
+  --roger-map: url('/roger_map_light.svg');
+
+  /* Spacing tokens */
+  --spacing-0: 0px;
+  --spacing-4: 4px;
+  --spacing-6: 6px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  --spacing-48: 48px;
+  --spacing-64: 64px;
+  --spacing-192: 192px;
+
+  /* Radius tokens */
+  --radius-0: 0px;
+  --radius-4: 4px;
+  --radius-6: 6px;
+  --radius-8: 8px;
+  --radius-16: 16px;
+  --radius-64: 64px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* ============================================
+       MATERIAL DESIGN BASE PALETTE - Dark Mode
+       Following Material Dark Theme guidelines
+       ============================================ */
+    --md-gray-50: #121212;
+    --md-gray-100: #1E1E1E;
+    --md-gray-200: #232323;
+    --md-gray-300: #2C2C2C;
+    --md-gray-400: #3D3D3D;
+    --md-gray-500: #5C5C5C;
+    --md-gray-600: #757575;
+    --md-gray-700: #9E9E9E;
+    --md-gray-800: #BDBDBD;
+    --md-gray-900: #E0E0E0;
+    
+    /* Material semantic - Dark */
+    --md-surface: #1E1E1E;
+    --md-background: #121212;
+    --md-on-surface: rgba(255, 255, 255, 0.87);
+    --md-on-surface-medium: rgba(255, 255, 255, 0.60);
+    --md-on-surface-disabled: rgba(255, 255, 255, 0.38);
+    --md-outline: #3D3D3D;
+    --md-outline-variant: #5C5C5C;
+    
+    /* Material status - lightened for dark bg */
+    --md-success: #81C784;
+    --md-error: #EF5350;
+
+    /* ============================================
+       PORTFOLIO DESIGN SYSTEM - Dark Mode
+       ============================================ */
+    --gray-4: #2C2C2C;
+    --brown-4: #3E3025;
+    --green-8: #6FCF97;
+    --button-ghost: rgba(255, 255, 255, 0);
+    --purple-7: #B794D4;
+
+    /* ============================================
+       CONTRACT MANAGER COVER - Dark Mode Overrides
+       (Most values cascade from md- variable changes)
+       ============================================ */
+    /* Elevated surface for better contrast against dark portfolio bg */
+    --cm-card-bg: #2A2A2A;
+    --cm-sidebar-bg: #1E1E1E;
+    --cm-header-bg: #1E1E1E;
+    
+    /* Subtle outline on outside for definition in dark mode (via box-shadow spread) */
+    --cm-card-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08);
+    
+    /* Borders need to be lighter than card-bg (#2A2A2A) to be visible */
+    --cm-border: #404040;
+    --cm-border-light: #3A3A3A;
+    --cm-border-input: #4A4A4A;
+    --cm-divider: #404040;
+    --cm-checkbox-border: #9E9E9E;
+    
+    /* Placeholder text - needs to be visible but still look like placeholder */
+    --cm-text-placeholder: #8A8A8A;
+    
+    /* Experian blues - lightened for dark mode legibility */
+    --cm-blue-primary: #7BAFD4;
+    --cm-blue-secondary: #8EBDE0;
+    --cm-blue-border: #5A8AC0;
+    
+    /* Status colors - using Material dark variants */
+    --cm-green: var(--md-success);
+    --cm-red: var(--md-error);
+    
+    --cm-icon-action: #7BAFD4;
+    --cm-icon-pagination: var(--md-gray-800);
+    --cm-icon-pagination-disabled: var(--md-gray-500);
+    --cm-table-filter-icon: var(--md-gray-700);
+
+    /* ============================================
+       BUSHEL FULFILLMENT COVER - Dark Mode Overrides
+       ============================================ */
+    /* Elevated surface for contrast against dark portfolio bg */
+    --bf-bg: #2A2A2A;
+    --bf-card-bg: #323232;
+    --bf-sidebar-bg: #2A2A2A;
+    
+    --bf-text: rgba(255, 255, 255, 0.87);
+    --bf-text-muted: rgba(255, 255, 255, 0.60);
+    --bf-text-subtle: rgba(255, 255, 255, 0.45);
+    --bf-footer-text: rgba(255, 255, 255, 0.45);
+    
+    --bf-border: #404040;
+    --bf-tag-bg: #3A3A3A;
+    
+    /* Bushel blue - muted for dark mode to avoid being too vibrant */
+    --bf-blue: #4a7eb8;
+    /* Status colors - Material dark variants */
+    --bf-green: var(--md-success);
+    --bf-red: var(--md-error);
+    
+    --bf-row-shadow: none;
+    /* Subtle outline on outside for definition in dark mode (via box-shadow spread) */
+    --bf-card-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08);
+
+    /* ============================================
+       ROGER COVER - Dark Mode Overrides
+       ============================================ */
+    /* Elevated surfaces for contrast against dark portfolio bg */
+    --roger-bg: #2A2A2A;
+    --roger-card-bg: #323232;
+    --roger-sidebar-content-bg: #2A2A2A;
+    --roger-panel-bg: #3A3A3A;
+    --roger-chip-bg: #4A4A4A;
+    --roger-chat-illustration-bg: #3A3A3A;
+    
+    --roger-text: rgba(255, 255, 255, 0.87);
+    --roger-text-muted: rgba(255, 255, 255, 0.60);
+    --roger-text-subtle: rgba(255, 255, 255, 0.45);
+    --roger-text-terms-label: rgba(255, 255, 255, 0.87);
+    --roger-text-terms-body: rgba(255, 255, 255, 0.60);
+    
+    --roger-border: #404040;
+    --roger-divider: #4A4A4A;
+    --roger-dot: rgba(255, 255, 255, 0.87);
+    
+    /* Roger blue - darkened for dark mode to reduce vibrancy */
+    --roger-blue: #3D7AB8;
+    /* Logo stays the same lime green */
+    
+    --roger-icon-nav: rgba(255, 255, 255, 0.60);
+    --roger-icon-active: #5A9FE8;
+    --roger-icon-dark: rgba(255, 255, 255, 0.87);
+    
+    --roger-pending-bg: #4A4A4A;
+    --roger-pending-text: rgba(255, 255, 255, 0.87);
+    --roger-counter-bg: #4A4A4A;
+    --roger-counter-text: rgba(255, 255, 255, 0.87);
+    --roger-company-badge-bg: #2D5A3D;  /* Lightened for dark mode */
+    
+    /* Subtle outline on outside for definition in dark mode (via box-shadow spread) */
+    --roger-card-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08);
+    
+    /* Map - switches to dark variant */
+    --roger-map: url('/roger_map_dark.svg');
+  }
+}
+
+body {
+  background-color: var(--gray-1);
+  color: var(--text-primary);
+}
+
+/* Lightbox animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Project cover hover - scales only the inner mockup content */
+/* Using 'scale' property so it stacks with existing 'transform: scale()' */
+.cover-content {
+  transition: scale 200ms ease;
+}
+
+.cover-interactive:hover .cover-content {
+  scale: 1.03;
+}
+
+/* Lightbox mode - removes CoverScaler background and padding */
+.lightbox-mode .cover-wrapper {
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+/* Remove cover outline/shadow in lightbox mode (dark mode only) */
+@media (prefers-color-scheme: dark) {
+  .lightbox-mode {
+    --cm-card-shadow: none;
+    --bf-card-shadow: none;
+    --roger-card-shadow: none;
+  }
+}

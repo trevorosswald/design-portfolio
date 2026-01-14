@@ -94,7 +94,7 @@ export default function FloatingVideoIntro({ videoSrc = '/intro_video.mp4' }: Fl
     }
     hideControlsTimeoutRef.current = setTimeout(() => {
       setShowControls(false)
-    }, 1500)
+    }, 800)
   }, [])
 
   // Handle play/pause toggle

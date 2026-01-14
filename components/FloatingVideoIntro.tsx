@@ -185,6 +185,7 @@ export default function FloatingVideoIntro({ videoSrc = '/intro_video.mp4' }: Fl
             <video
               ref={videoRef}
               src={videoSrc}
+              poster="/intro_video_poster.jpg"
               className="absolute inset-0 w-full h-full rounded-full object-cover cursor-pointer outline-none border-0 ring-0 focus:outline-none focus:ring-0"
               onLoadedMetadata={handleVideoLoadedMetadata}
               onTimeUpdate={handleTimeUpdate}
@@ -205,7 +206,7 @@ export default function FloatingVideoIntro({ videoSrc = '/intro_video.mp4' }: Fl
                 }
               }}
               playsInline
-              preload="metadata"
+              preload="auto"
             />
           </div>
         </div>

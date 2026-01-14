@@ -8,6 +8,7 @@ import Footer from '@/components/Footer'
 import RogerCover from '@/components/RogerCover'
 import ContractManagerCover from '@/components/ContractManagerCover'
 import BushelFulfillmentCover from '@/components/BushelFulfillmentCover'
+import FloatingVideoIntro from '@/components/FloatingVideoIntro'
 import { PersonalInfo, WorkExperience as WorkExperienceType, Project, Education as EducationType, Writing } from '@/types'
 
 // Content extracted from Figma design
@@ -139,6 +140,7 @@ export default function Home() {
           <Footer personalInfo={personalInfo} />
         </div>
       </div>
+      <FloatingVideoIntro />
     </div>
   )
 }

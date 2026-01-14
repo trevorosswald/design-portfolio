@@ -39,15 +39,26 @@ export default function FloatingVideoIntro({ videoSrc = '/intro_video.mp4' }: Fl
   const [isVisible, setIsVisible] = useState(true)
   const [isPlaying, setIsPlaying] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
+  const [showControls, setShowControls] = useState(true)
   const [progress, setProgress] = useState(0)
   const [duration, setDuration] = useState(0)
   const videoRef = useRef<HTMLVideoElement>(null)
   const svgRef = useRef<SVGSVGElement>(null)
+  const hideControlsTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   // Video always shows on page load (no localStorage persistence)
   // Clear any existing dismissal from localStorage
   useEffect(() => {
     localStorage.removeItem('floating-video-dismissed')
+  }, [])
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (hideControlsTimeoutRef.current) {
+        clearTimeout(hideControlsTimeoutRef.current)
+      }
+    }
   }, [])
 
   // Handle video metadata loaded
@@ -76,6 +87,16 @@ export default function FloatingVideoIntro({ videoSrc = '/intro_video.mp4' }: Fl
     }
   }, [duration])
 
+  // Auto-hide controls after delay when playing
+  const scheduleHideControls = useCallback(() => {
+    if (hideControlsTimeoutRef.current) {
+      clearTimeout(hideControlsTimeoutRef.current)
+    }
+    hideControlsTimeoutRef.current = setTimeout(() => {
+      setShowControls(false)
+    }, 1500)
+  }, [])
+
   // Handle play/pause toggle
   const handlePlayPause = useCallback(() => {
     if (!videoRef.current) return
@@ -83,11 +104,16 @@ export default function FloatingVideoIntro({ videoSrc = '/intro_video.mp4' }: Fl
     if (isPlaying) {
       videoRef.current.pause()
       setIsPlaying(false)
+      setShowControls(true)
+      if (hideControlsTimeoutRef.current) {
+        clearTimeout(hideControlsTimeoutRef.current)
+      }
     } else {
       videoRef.current.play()
       setIsPlaying(true)
+      scheduleHideControls()
     }
-  }, [isPlaying])
+  }, [isPlaying, scheduleHideControls])
 
   // Handle progress bar click - seek to clicked position
   const handleProgressClick = useCallback((e: React.MouseEvent<SVGSVGElement>) => {
@@ -176,8 +202,25 @@ export default function FloatingVideoIntro({ videoSrc = '/intro_video.mp4' }: Fl
       {/* Container is larger to accommodate progress bar outside */}
       <div 
         className="relative w-[160px] h-[160px] flex items-center justify-center"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        onMouseEnter={() => {
+          setIsHovered(true)
+          setShowControls(true)
+          if (hideControlsTimeoutRef.current) {
+            clearTimeout(hideControlsTimeoutRef.current)
+          }
+        }}
+        onMouseLeave={() => {
+          setIsHovered(false)
+          if (isPlaying) {
+            scheduleHideControls()
+          }
+        }}
+        onTouchStart={() => {
+          if (isPlaying) {
+            setShowControls(true)
+            scheduleHideControls()
+          }
+        }}
       >
         {/* Video element - 148px with 2px padding (152px container) */}
         <div className="relative w-[152px] h-[152px] rounded-full z-0 p-[2px]">
@@ -196,8 +239,17 @@ export default function FloatingVideoIntro({ videoSrc = '/intro_video.mp4' }: Fl
                   handlePlayPause()
                 }
               }}
-              onPlay={() => setIsPlaying(true)}
-              onPause={() => setIsPlaying(false)}
+              onPlay={() => {
+                setIsPlaying(true)
+                scheduleHideControls()
+              }}
+              onPause={() => {
+                setIsPlaying(false)
+                setShowControls(true)
+                if (hideControlsTimeoutRef.current) {
+                  clearTimeout(hideControlsTimeoutRef.current)
+                }
+              }}
               onEnded={() => {
                 setIsPlaying(false)
                 setProgress(0)
@@ -262,8 +314,8 @@ export default function FloatingVideoIntro({ videoSrc = '/intro_video.mp4' }: Fl
               }`}
               aria-label={isPlaying ? 'Pause video' : 'Play video'}
               style={{
-                opacity: !isPlaying ? 1 : isHovered ? 1 : 0,
-                pointerEvents: !isPlaying || isHovered ? 'auto' : 'none',
+                opacity: !isPlaying ? 1 : showControls ? 1 : 0,
+                pointerEvents: !isPlaying || showControls ? 'auto' : 'none',
                 border: 'none',
                 outline: 'none',
                 boxShadow: 'none',

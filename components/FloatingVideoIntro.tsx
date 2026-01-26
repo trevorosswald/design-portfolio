@@ -197,7 +197,7 @@ export default function FloatingVideoIntro({ videoSrc = '/intro_video.mp4' }: Fl
 
   return (
     <div
-      className="fixed bottom-6 right-6 sm:bottom-6 sm:right-6 md:bottom-6 md:right-auto md:left-[calc(50%-560px)] z-50"
+      className="fixed bottom-6 right-6 md:bottom-12 md:right-12 z-50"
     >
       {/* Container is larger to accommodate progress bar outside */}
       <div 

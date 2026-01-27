@@ -71,7 +71,7 @@ const selectedWorks: Project[] = [
 const personalProjects: Project[] = [
   {
     title: 'The Sword',
-    tagline: 'AI powered Bible reading app.',
+    tagline: 'AI powered Bible reading and listening app.',
     link: {
       url: 'https://www.thesword.app/',
       label: 'View App',

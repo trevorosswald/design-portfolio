@@ -127,8 +127,8 @@ export default function SwordLogo() {
   const [hueRotation, setHueRotation] = useState(0)
   const animationRef = useRef<number>()
 
-  // Calculate sword size based on container (30% of the smaller dimension)
-  const swordSize = Math.max(40, Math.min(containerSize.width, containerSize.height) * 0.3)
+  // Calculate sword size based on container (35% of the smaller dimension)
+  const swordSize = Math.max(40, Math.min(containerSize.width, containerSize.height) * 0.35)
 
   // Get container size on mount and resize
   useEffect(() => {

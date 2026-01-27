@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 const FONT_STYLES = [
   { family: 'Inter, sans-serif', weight: 400, italic: false },
@@ -16,7 +16,10 @@ const FONT_STYLES = [
 
 export default function LorenIpsumLogo() {
   const [styleIndex, setStyleIndex] = useState(0)
+  const [fontSize, setFontSize] = useState(24)
+  const containerRef = useRef<HTMLDivElement>(null)
 
+  // Cycle through font styles
   useEffect(() => {
     const interval = setInterval(() => {
       setStyleIndex((prev) => (prev + 1) % FONT_STYLES.length)
@@ -24,16 +27,33 @@ export default function LorenIpsumLogo() {
     return () => clearInterval(interval)
   }, [])
 
+  // Scale font size based on container width
+  useEffect(() => {
+    const updateSize = () => {
+      if (containerRef.current) {
+        const width = containerRef.current.clientWidth
+        // Base: 24px at 208px width, scale proportionally
+        const newSize = Math.max(12, (width / 208) * 24)
+        setFontSize(newSize)
+      }
+    }
+    updateSize()
+    window.addEventListener('resize', updateSize)
+    return () => window.removeEventListener('resize', updateSize)
+  }, [])
+
   const current = FONT_STYLES[styleIndex]
 
   return (
-    <div className="flex items-center justify-center bg-[#5bb98c] rounded h-full">
+    <div ref={containerRef} className="flex items-center justify-center bg-[#5bb98c] rounded h-full">
       <p 
-        className="text-[24px] leading-[32px] tracking-[-0.46px] text-[#171717]"
+        className="tracking-[-0.02em] text-[#171717]"
         style={{ 
           fontFamily: current.family,
           fontWeight: current.weight,
-          fontStyle: current.italic ? 'italic' : 'normal'
+          fontStyle: current.italic ? 'italic' : 'normal',
+          fontSize: `${fontSize}px`,
+          lineHeight: 1.33,
         }}
       >
         Loren Ipsum

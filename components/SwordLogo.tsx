@@ -2,15 +2,12 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react'
 
-const SWORD_WIDTH = 80
-const SWORD_HEIGHT = 80
-
 // Hue rotation values for color shifts (only on corner hits)
 const HUE_ROTATIONS = [0, 30, 90, 180, 270] // normal, gold, green, blue, purple
 
 // Pixel art sword as SVG - converted from individual divs
 const SwordSVG = () => (
-  <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg width="100%" height="100%" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
     {/* Handle - dark outlines */}
     <rect x="4.71" y="75.29" width="4.706" height="4.706" fill="#171717"/>
     <rect x="9.41" y="75.29" width="4.706" height="4.706" fill="#171717"/>
@@ -130,6 +127,9 @@ export default function SwordLogo() {
   const [hueRotation, setHueRotation] = useState(0)
   const animationRef = useRef<number>()
 
+  // Calculate sword size based on container (30% of the smaller dimension)
+  const swordSize = Math.max(40, Math.min(containerSize.width, containerSize.height) * 0.3)
+
   // Get container size on mount and resize
   useEffect(() => {
     const updateSize = () => {
@@ -145,9 +145,9 @@ export default function SwordLogo() {
 
   // Calculate centered position
   const getCenteredPosition = useCallback(() => ({
-    x: (containerSize.width - SWORD_WIDTH) / 2,
-    y: (containerSize.height - SWORD_HEIGHT) / 2,
-  }), [containerSize])
+    x: (containerSize.width - swordSize) / 2,
+    y: (containerSize.height - swordSize) / 2,
+  }), [containerSize, swordSize])
 
   useEffect(() => {
     if (isHovering) {
@@ -210,8 +210,8 @@ export default function SwordLogo() {
           x = 0
           dx = Math.abs(dx)
           hitX = true
-        } else if (x + SWORD_WIDTH >= containerWidth) {
-          x = containerWidth - SWORD_WIDTH
+        } else if (x + swordSize >= containerWidth) {
+          x = containerWidth - swordSize
           dx = -Math.abs(dx)
           hitX = true
         }
@@ -221,8 +221,8 @@ export default function SwordLogo() {
           y = 0
           dy = Math.abs(dy)
           hitY = true
-        } else if (y + SWORD_HEIGHT >= containerHeight) {
-          y = containerHeight - SWORD_HEIGHT
+        } else if (y + swordSize >= containerHeight) {
+          y = containerHeight - swordSize
           dy = -Math.abs(dy)
           hitY = true
         }
@@ -249,7 +249,7 @@ export default function SwordLogo() {
         cancelAnimationFrame(animationRef.current)
       }
     }
-  }, [isHovering, containerSize, getCenteredPosition])
+  }, [isHovering, containerSize, getCenteredPosition, swordSize])
 
   // Use centered position when position is null
   const { x, y } = position ?? getCenteredPosition()
@@ -266,8 +266,8 @@ export default function SwordLogo() {
         className="absolute"
         style={{
           transform: `translate(${x}px, ${y}px)`,
-          width: SWORD_WIDTH,
-          height: SWORD_HEIGHT,
+          width: swordSize,
+          height: swordSize,
           filter: hueRotation !== 0 ? `hue-rotate(${hueRotation}deg)` : 'none',
           transition: isReturning ? 'transform 400ms cubic-bezier(0.4, 0, 0.2, 1), filter 300ms' : 'filter 300ms',
         }}

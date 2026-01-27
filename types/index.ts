@@ -1,10 +1,13 @@
 export interface WorkExperience {
   dateRange: string
-  title: string
+  role: string
+  company: string
+  logo?: React.ReactNode
 }
 
 export interface Project {
   title: string
+  logo?: React.ReactNode // Company/project logo displayed next to title
   tagline: string // One-liner: what the product is
   contribution?: string // Your specific work and impact
   imageUrl?: string

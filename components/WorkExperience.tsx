@@ -16,9 +16,21 @@ export default function WorkExperience({ experiences }: WorkExperienceProps) {
             <p className="font-normal shrink-0 text-text-secondary sm:w-[120px]">
               {exp.dateRange}
             </p>
-            <p className="flex-1 font-medium text-text-primary">
-              {exp.title}
-            </p>
+            <div className="flex-1 flex items-center gap-1">
+              <span className="font-medium text-text-primary">
+                {exp.role} at
+              </span>
+              <span className="flex items-center gap-0.5">
+                {exp.logo && (
+                  <span className="flex items-center justify-center w-5 h-5 p-0.5">
+                    {exp.logo}
+                  </span>
+                )}
+                <span className="font-medium text-text-primary">
+                  {exp.company}
+                </span>
+              </span>
+            </div>
           </div>
         ))}
       </div>

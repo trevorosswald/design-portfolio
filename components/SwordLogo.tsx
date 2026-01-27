@@ -150,8 +150,8 @@ export default function SwordLogo() {
   }), [containerSize])
 
   useEffect(() => {
-    if (!isHovering) {
-      // Stop bouncing animation
+    if (isHovering) {
+      // Stop bouncing animation on hover
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current)
         animationRef.current = undefined
@@ -170,10 +170,10 @@ export default function SwordLogo() {
       return () => clearTimeout(timeout)
     }
 
-    // Starting to hover - disable transition and start from center
+    // Not hovering - disable transition and start animation from center
     setIsReturning(false)
     
-    // Initialize position from center when starting to hover
+    // Initialize position from center when starting animation
     const startPos = getCenteredPosition()
     setPosition(startPos)
 

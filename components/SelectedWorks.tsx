@@ -16,9 +16,16 @@ export default function SelectedWorks({ projects }: SelectedWorksProps) {
           <article key={index} className="flex flex-col gap-[24px] items-start w-full">
             {/* Header: Title + Tagline */}
             <div className="flex flex-col gap-1 items-start leading-5 text-sm tracking-[-0.084px] w-full">
-              <p className="font-medium text-text-primary">
-                {project.title}
-              </p>
+              <div className="flex items-center gap-1">
+                {project.logo && (
+                  <span className="flex items-center justify-center w-5 h-5">
+                    {project.logo}
+                  </span>
+                )}
+                <p className="font-medium text-text-primary">
+                  {project.title}
+                </p>
+              </div>
               <p className="font-normal text-text-secondary">
                 {project.tagline}
               </p>

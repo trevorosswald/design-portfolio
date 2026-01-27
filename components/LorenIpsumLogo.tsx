@@ -1,54 +1,43 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
-const TYPE_SCALE = [
-  { size: '42px', leading: '48px', tracking: '-0.9px' },
-  { size: '32px', leading: '38px', tracking: '-0.7px' },
-  { size: '26px', leading: '32px', tracking: '-0.55px' },
-  { size: '21px', leading: '28px', tracking: '-0.4px' },
-  { size: '17px', leading: '24px', tracking: '-0.29px' },
-  { size: '15px', leading: '21px', tracking: '-0.21px' },
-  { size: '13px', leading: '18px', tracking: '-0.17px' },
+const FONT_STYLES = [
+  { family: 'Inter, sans-serif', weight: 400, italic: false },
+  { family: 'Georgia, serif', weight: 700, italic: true },
+  { family: 'Courier, monospace', weight: 400, italic: false },
+  { family: 'Inter, sans-serif', weight: 700, italic: false },
+  { family: 'Georgia, serif', weight: 400, italic: false },
+  { family: 'Courier, monospace', weight: 700, italic: true },
+  { family: 'Inter, sans-serif', weight: 500, italic: true },
+  { family: 'Georgia, serif', weight: 400, italic: true },
+  { family: 'Courier, monospace', weight: 400, italic: true },
 ]
 
-function LoremRow({ style }: { style: typeof TYPE_SCALE[0] }) {
-  const [isHovering, setIsHovering] = useState(false)
-  const [isDesktop, setIsDesktop] = useState(false)
+export default function LorenIpsumLogo() {
+  const [styleIndex, setStyleIndex] = useState(0)
 
-  // Check for desktop on mount and resize
   useEffect(() => {
-    const checkDesktop = () => setIsDesktop(window.matchMedia('(min-width: 768px)').matches)
-    checkDesktop()
-    window.addEventListener('resize', checkDesktop)
-    return () => window.removeEventListener('resize', checkDesktop)
+    const interval = setInterval(() => {
+      setStyleIndex((prev) => (prev + 1) % FONT_STYLES.length)
+    }, 600)
+    return () => clearInterval(interval)
   }, [])
 
-  const shouldAnimate = isHovering && isDesktop
+  const current = FONT_STYLES[styleIndex]
 
   return (
-    <p 
-      className="cursor-default transition-[font-weight] duration-200 ease-out"
-      style={{
-        fontSize: style.size,
-        lineHeight: style.leading,
-        letterSpacing: style.tracking,
-        fontWeight: shouldAnimate ? 900 : 500,
-      }}
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}
-    >
-      Lorem Ipsum
-    </p>
-  )
-}
-
-export default function LorenIpsumLogo() {
-  return (
-    <div className="flex flex-col items-start text-text-primary p-[12px] h-full">
-      {TYPE_SCALE.map((style, i) => (
-        <LoremRow key={i} style={style} />
-      ))}
+    <div className="flex items-center justify-center bg-[#5bb98c] rounded h-full">
+      <p 
+        className="text-[24px] leading-[32px] tracking-[-0.46px] text-[#171717]"
+        style={{ 
+          fontFamily: current.family,
+          fontWeight: current.weight,
+          fontStyle: current.italic ? 'italic' : 'normal'
+        }}
+      >
+        Loren Ipsum
+      </p>
     </div>
   )
 }

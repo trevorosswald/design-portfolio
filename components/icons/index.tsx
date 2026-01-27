@@ -6,3 +6,8 @@ export const ArrowUpRightIcon = ({ color = "currentColor", size = 11 }: { color?
     <path d="M4.67 11.33L11.33 4.67M11.33 4.67H4.67M11.33 4.67V11.33"/>
   </svg>
 )
+
+// Company logos
+export { ExperianLogo } from './ExperianLogo'
+export { BushelLogo } from './BushelLogo'
+export { RogerLogo } from './RogerLogo'

@@ -22,7 +22,7 @@ export default function PersonalProjects({
       <SectionHeader title="Personal Projects" description={description} />
       
       {showImages ? (
-        <div className="flex flex-col sm:flex-row gap-[24px] sm:gap-[32px] items-start w-full">
+        <div className="flex flex-row gap-[24px] sm:gap-[32px] items-start w-full">
           {projects.map((project, index) => (
             <div key={index} className="flex flex-col gap-[12px] items-start w-full sm:flex-1">
               <div 

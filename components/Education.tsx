@@ -18,7 +18,7 @@ export default function Education({ education }: EducationProps) {
             </p>
             <div className="flex flex-col gap-3 items-start w-full">
               <div className="flex flex-col gap-1 items-start w-full">
-                <p className="font-semibold leading-[22px] text-base text-text-primary tracking-[-0.208px]">
+                <p className="font-medium leading-5 text-sm text-text-primary tracking-[-0.084px]">
                   {edu.degree}
                 </p>
                 <p className="font-normal leading-5 text-sm text-text-secondary tracking-[-0.084px]">

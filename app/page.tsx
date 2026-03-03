@@ -8,14 +8,14 @@ import RogerCover from '@/components/RogerCover'
 import ContractManagerCover from '@/components/ContractManagerCover'
 import BushelFulfillmentCover from '@/components/BushelFulfillmentCover'
 import FloatingVideoIntro from '@/components/FloatingVideoIntro'
-import { ExperianLogo, BushelLogo, RogerLogo } from '@/components/icons'
+import { ExperianLogo, BushelLogo, RogerLogo, MyCarrierLogo } from '@/components/icons'
 import { PersonalInfo, WorkExperience as WorkExperienceType, Project, Education as EducationType } from '@/types'
 
 // Content extracted from Figma design
 const personalInfo: PersonalInfo = {
   name: 'Trevor Osswald',
   jobTitle: 'Product Designer',
-  bio: "I design products and build them too. Right now I'm working on healthcare and claims tools at Experian Health. Before that, ag-tech, fintech, and logistics.",
+  bio: "I design products and build them too. Right now I'm working at MyCarrier. Before that, healthcare and claims tools at Experian Health, plus ag-tech, fintech, and logistics.",
   personalProjectsBio: "I also build my own products. Right now I'm working an AI-powered Bible listening app called The Sword.",
   email: 'trevorosswald@gmail.com',
   profileImageUrl: '/profile_pic.jpeg',
@@ -28,7 +28,13 @@ const personalInfo: PersonalInfo = {
 
 const workExperience: WorkExperienceType[] = [
   {
-    dateRange: '2023 — Now',
+    dateRange: '2026 — Now',
+    role: 'Product Designer',
+    company: 'MyCarrier',
+    logo: <MyCarrierLogo size={16} />,
+  },
+  {
+    dateRange: '2023 — 2026',
     role: 'Product Designer',
     company: 'Experian',
     logo: <ExperianLogo size={16} />,
@@ -108,6 +114,8 @@ const education: EducationType[] = [
   },
 ]
 
+const showFloatingVideo = false
+
 export default function Home() {
   return (
     <div className="bg-gray-1 flex items-center px-0 py-8 sm:py-[128px] min-h-screen">
@@ -125,7 +133,7 @@ export default function Home() {
           <Footer personalInfo={personalInfo} />
         </div>
       </div>
-      <FloatingVideoIntro />
+      {showFloatingVideo && <FloatingVideoIntro />}
     </div>
   )
 }

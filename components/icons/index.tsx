@@ -11,3 +11,4 @@ export const ArrowUpRightIcon = ({ color = "currentColor", size = 11 }: { color?
 export { ExperianLogo } from './ExperianLogo'
 export { BushelLogo } from './BushelLogo'
 export { RogerLogo } from './RogerLogo'
+export { MyCarrierLogo } from './MyCarrierLogo'

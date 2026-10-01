@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 :root {
+  --portfolio-background: #fff;
+  --portfolio-text: #000;
+  --portfolio-muted: #767676;
+  --portfolio-link-underline: rgba(0, 0, 0, 0.18);
+
   /* ============================================
      MATERIAL DESIGN BASE PALETTE - Light Mode
      ============================================ */
@@ -183,9 +188,29 @@
   --radius-64: 64px;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --portfolio-background: #161616;
+    --portfolio-text: #f2f2f2;
+    --portfolio-muted: #999;
+    --portfolio-link-underline: rgba(242, 242, 242, 0.22);
+  }
+}
+
 body {
-  background-color: var(--gray-1);
-  color: var(--text-primary);
+  margin: 0;
+  background: var(--portfolio-background);
+  color: var(--portfolio-text);
+  font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: calc(20 / 14);
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  color-scheme: light dark;
+  background: var(--portfolio-background);
 }
 
 /* Lightbox animations */

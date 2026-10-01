@@ -1,139 +1,42 @@
-import Intro from '@/components/Intro'
-import WorkExperience from '@/components/WorkExperience'
-import PersonalProjects from '@/components/PersonalProjects'
-import SelectedWorks from '@/components/SelectedWorks'
-import Education from '@/components/Education'
-import Footer from '@/components/Footer'
-import RogerCover from '@/components/RogerCover'
-import ContractManagerCover from '@/components/ContractManagerCover'
-import BushelFulfillmentCover from '@/components/BushelFulfillmentCover'
-import FloatingVideoIntro from '@/components/FloatingVideoIntro'
-import { ExperianLogo, BushelLogo, RogerLogo, MyCarrierLogo } from '@/components/icons'
-import { PersonalInfo, WorkExperience as WorkExperienceType, Project, Education as EducationType } from '@/types'
-
-// Content extracted from Figma design
-const personalInfo: PersonalInfo = {
-  name: 'Trevor Osswald',
-  jobTitle: 'Product Designer',
-  bio: "I design products and build them too. Right now I'm working at MyCarrier. Before that, healthcare and claims tools at Experian Health, plus ag-tech, fintech, and logistics.",
-  personalProjectsBio: "I also build my own products. Right now I'm working an AI-powered Bible listening app called The Sword.",
-  email: 'trevorosswald@gmail.com',
-  profileImageUrl: '/profile_pic.jpeg',
-  socialLinks: {
-    linkedin: 'https://linkedin.com/in/trevorosswald',
-    instagram: 'https://instagram.com/trevorosswald',
-    substack: 'https://trevorosswald.substack.com',
-  },
-}
-
-const workExperience: WorkExperienceType[] = [
-  {
-    dateRange: '2026 — Now',
-    role: 'Product Designer',
-    company: 'MyCarrier',
-    logo: <MyCarrierLogo size={16} />,
-  },
-  {
-    dateRange: '2023 — 2026',
-    role: 'Product Designer',
-    company: 'Experian',
-    logo: <ExperianLogo size={16} />,
-  },
-  {
-    dateRange: '2021 — 2023',
-    role: 'Product Designer',
-    company: 'Bushel Powered',
-    logo: <BushelLogo size={16} />,
-  },
-]
-
-const selectedWorks: Project[] = [
-  {
-    title: 'Experian Health',
-    logo: <ExperianLogo size={16} />,
-    tagline: 'Healthcare claims and contract management software for payer-provider negotiations.',
-    contribution: 'Currently leading the ongoing redesign of Contract Manager, introducing an intuitive interface with streamlined navigation, smart workflows to automate repetitive tasks, and AI-powered insights for faster contract analysis. Implementing our new design system across the product.',
-    coverComponent: <ContractManagerCover />,
-    tags: ['UX Design', 'Design Systems', 'AI Tools'],
-  },
-  {
-    title: 'Bushel Powered',
-    logo: <BushelLogo size={16} />,
-    tagline: 'Scale ticket management for direct ship and commercial grain transactions.',
-    contribution: 'Designed the grade factor threshold notification system through discovery, prototyping, and usability testing. Enabled grain buyers to set location-based thresholds and receive automated alerts when quality metrics fall outside acceptable ranges, reducing manual monitoring time and preventing costly quality disputes.',
-    coverComponent: <BushelFulfillmentCover />,
-    tags: ['UX Design', 'User Research', 'Product'],
-  },
-  {
-    title: 'Roger That',
-    logo: <RogerLogo size={16} />,
-    tagline: 'Digital marketplace bringing transparency to dry bulk shipping.',
-    contribution: 'Led design for Roger\'s three platforms, conducting discovery with shippers, carriers, and drivers to inform a comprehensive redesign of the deal booking flow. Enhanced dashboard visibility, search functionality with filters, and communication features that significantly improved efficiency in finding and booking deals for carriers and shippers.',
-    coverComponent: <RogerCover />,
-    tags: ['UX Design', 'Product', 'B2B'],
-  },
-]
-
-const personalProjects: Project[] = [
-  {
-    title: 'The Sword',
-    tagline: 'AI powered Bible reading and listening app.',
-    link: {
-      url: 'https://www.thesword.app/',
-      label: 'View App',
-    },
-  },
-  {
-    title: 'Loren Ipsum',
-    tagline: 'My design system I use for everything.',
-    link: {
-      url: 'https://www.figma.com/design/KAAWh1heETtlHeEk8txVRc/Loren-Ispem?node-id=30158-276971&t=wYHxGni5krcaF6GW-1',
-      label: 'View File',
-    },
-  },
-]
-
-const education: EducationType[] = [
-  {
-    dateRange: '2020 — 2021',
-    degree: 'Arizona State University, BA',
-    location: 'Online',
-    description: 'After I came home from Spain, COVID happened, and I transferred to an online program. I graduated with my Bachelor of Arts from ASU through the SCAP program.',
-  },
-  {
-    dateRange: 'Spring of 2019',
-    degree: 'Study Abroad',
-    location: 'Seville, Spain',
-    description: "In the spring of 2019, I studied abroad through Taylor University's program, focusing on Spanish language and fine arts for six months in Seville.",
-  },
-  {
-    dateRange: '2016 — 2019',
-    degree: 'Taylor University',
-    location: 'Upland, Indiana',
-    description: 'I discovered design through street photography in Chicago and attended Taylor University for three years, where I studied graphic design and minored in photography.',
-  },
-]
-
-const showFloatingVideo = false
-
 export default function Home() {
   return (
-    <div className="bg-gray-1 flex items-center px-0 py-8 sm:py-[128px] min-h-screen">
-      <div className="flex grow items-center justify-center w-full">
-        <div className="flex flex-col gap-16 sm:gap-[64px] items-start max-w-[680px] px-4 w-full">
-          <Intro personalInfo={personalInfo} />
-          <WorkExperience experiences={workExperience} />
-          <SelectedWorks projects={selectedWorks} />
-          <PersonalProjects
-            projects={personalProjects}
-            description="I love building things, exploring new ideas, and using side projects as a way to learn new skills and tools. Here are a few things I have made recently."
-            showImages={true}
-          />
-          <Education education={education} />
-          <Footer personalInfo={personalInfo} />
-        </div>
-      </div>
-      {showFloatingVideo && <FloatingVideoIntro />}
+    <div className="portfolio">
+      <main className="portfolio-bio" aria-label="About Trevor Osswald">
+        <p>
+          Hi, I&apos;m Trevor Osswald. I am a product designer based in Austin,
+          Texas, with a growing focus on design engineering.
+        </p>
+
+        <p>
+          Currently designing and shipping software at MyCarrier. Previously
+          I worked on claims tools at Experian Health and agriculture tech at
+          Bushel Powered.
+        </p>
+
+        <p>
+          Founded an iOS app called{' '}
+          <a href="https://www.thesword.app/" target="_blank" rel="noopener noreferrer">The Sword</a>,
+          which is an audio layer for reading scripture. Built a tokenized
+          design system called{' '}
+          <a href="https://www.figma.com/design/KAAWh1heETtlHeEk8txVRc/Loren-Ispem?node-id=30158-276971" target="_blank" rel="noopener noreferrer">Loren Ipsum</a>,
+          which I maintain as the foundation for my projects.
+        </p>
+
+        <p>
+          Studied graphic design and photography at Taylor University, spent a
+          semester in Seville, Spain, and later earned a BA from Arizona State
+          University.
+        </p>
+
+        <p>
+          You can find me on{' '}
+          <a href="https://x.com/trevorosswald" target="_blank" rel="noopener noreferrer">X</a>
+          {' '}and{' '}
+          <a href="https://github.com/trevorosswald" target="_blank" rel="noopener noreferrer">GitHub</a>,
+          {' '}or reach me via{' '}
+          <a href="mailto:trevorosswald@gmail.com">trevorosswald@gmail.com</a>
+        </p>
+      </main>
     </div>
   )
 }

@@ -1,0 +1,38 @@
+.portfolio {
+  width: 100%;
+  max-width: 424px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 32px;
+}
+
+.portfolio-bio p {
+  margin: 0 0 16px;
+}
+
+.portfolio-bio p:last-child {
+  margin-bottom: 0;
+}
+
+.portfolio-bio a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--portfolio-link-underline);
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+
+.portfolio-bio a:hover {
+  text-decoration-color: currentColor;
+}
+
+.portfolio-bio a:active {
+  opacity: 0.6;
+}
+
+.portfolio-bio a:focus-visible {
+  text-decoration-color: currentColor;
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
